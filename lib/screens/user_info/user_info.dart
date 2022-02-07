@@ -4,7 +4,6 @@ import 'package:shop_app_firebase/component/text/text_bold.dart';
 import 'package:shop_app_firebase/component/text/text_normal.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
 import 'package:shop_app_firebase/configs/colors.dart';
-import 'package:shop_app_firebase/provider/dark_theme_provider.dart';
 import 'package:shop_app_firebase/screens/user_info/widget/user_list_title.dart';
 
 class UserInfo extends StatefulWidget {
@@ -17,7 +16,7 @@ class UserInfo extends StatefulWidget {
 class _UserInfoState extends State<UserInfo> {
   late ScrollController _scrollController;
   var top = 0.0;
-
+  bool _value=false;
   @override
   void initState() {
     super.initState();
@@ -27,10 +26,9 @@ class _UserInfoState extends State<UserInfo> {
 
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<DarkThemeProvider>(context);
     void _onChanged(bool value) {
       setState(() {
-        themeChange.darkThem=value;
+
       });
     }
     return Scaffold(
@@ -185,7 +183,7 @@ class _UserInfoState extends State<UserInfo> {
                     ),
                     ListTileSwitch(
                       visualDensity: VisualDensity.comfortable,
-                      value: themeChange.darkTheme,
+                      value: _value,
                       leading: const Icon(Icons.nightlight_round),
                       onChanged: (value) => _onChanged(value),
                       switchType: SwitchType.cupertino,
@@ -203,8 +201,6 @@ class _UserInfoState extends State<UserInfo> {
     );
 
   }
-
-
 
   Widget _buildFab() {
     const double defaultTopMargin = 200.0 - 4.0;
