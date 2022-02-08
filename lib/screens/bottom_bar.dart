@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:shop_app_firebase/component/text/text_normal.dart';
 import 'package:shop_app_firebase/configs/colors.dart';
 
-import 'package:shop_app_firebase/screens/cart.dart';
-import 'package:shop_app_firebase/screens/feeds.dart';
+import 'package:shop_app_firebase/screens/cart/cart.dart';
+import 'package:shop_app_firebase/screens/feeds/feeds.dart';
 import 'package:shop_app_firebase/screens/search.dart';
 import 'package:shop_app_firebase/screens/user_info/user_info.dart';
-
 import 'home.dart';
 
 class BottomBarScreen extends StatefulWidget {
@@ -18,7 +17,7 @@ class BottomBarScreen extends StatefulWidget {
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
   late List<Map<String, Widget>> _pages;
-  int _selectedPageIndex = 4;
+  int _selectedPageIndex = 1;
 
   @override
   void initState() {
@@ -117,7 +116,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         ),
       ),
       floatingActionButtonLocation:
-      FloatingActionButtonLocation.miniCenterDocked,
+          FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
         child: FloatingActionButton(

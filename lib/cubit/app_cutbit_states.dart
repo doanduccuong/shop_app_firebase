@@ -15,4 +15,9 @@ class BottomBarState extends CubitStates{
   // TODO: implement props
   List<Object?> get props => [isDarkTheme];
 }
+class EmptyCartState extends CubitStates{
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
 

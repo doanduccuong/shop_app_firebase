@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_firebase/screens/bottom_bar.dart';
-
+import 'package:shop_app_firebase/screens/cart/cart_empty.dart';
 import 'app_cubit.dart';
 import 'app_cutbit_states.dart';
 class AppCubitLogics extends StatefulWidget {
@@ -20,6 +20,9 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
         builder: (context,state){
           if(state is BottomBarState){
             return const BottomBarScreen();
+          }
+          if(state is EmptyCartState){
+            return const CartEmpty();
           }
           else {
             return Container();

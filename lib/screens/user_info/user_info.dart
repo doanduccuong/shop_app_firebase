@@ -135,7 +135,8 @@ class _UserInfoState extends State<UserInfo> {
                             ),
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                            },
                             child:  ListTile(
                               leading: const Icon(Icons.shopping_cart_outlined),
                               title: TextNormal(
@@ -195,7 +196,6 @@ class _UserInfoState extends State<UserInfo> {
                               DarkThemePreference.setThemeStatus(value);
                               //print(DarkThemePreference.getThemeStatus());
                             },
-
                             switchType: SwitchType.cupertino,
                             switchActiveColor: Colors.indigo,
                             title:  TextNormal(title: 'Dark Theme',colors: DarkThemePreference.getThemeStatus()==false?AppColors.textColor:Colors.white,),
