@@ -1,12 +1,15 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
-
-import 'package:shop_app_firebase/configs/theme_data.dart';
 import 'package:shop_app_firebase/cubit/app_cutbit_states.dart';
+import 'package:shop_app_firebase/model/theme_preference.dart';
 
 class AppCubit extends Cubit<CubitStates> {
-  BuildContext context;
-  AppCubit({required this.context}) : super(InitialState()) {
-    emit(BottomBarState(themeData: Styles.themeData(false, context)));
+
+  AppCubit() : super(InitialState()) {
+
+    emit(BottomBarState(isDarkTheme: DarkThemePreference.getThemeStatus()));
+  }
+
+  void changeTheme(bool value){
+    emit(BottomBarState(isDarkTheme: value));
   }
 }

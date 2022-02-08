@@ -1,7 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import 'package:shop_app_firebase/configs/theme_data.dart';
-
 abstract class CubitStates extends Equatable{}
 
 class InitialState extends CubitStates{
@@ -11,19 +8,11 @@ class InitialState extends CubitStates{
   List<Object?> get props => [];
 }
 class BottomBarState extends CubitStates{
-  ThemeData themeData;
-  BottomBarState({required this.themeData});
+  bool isDarkTheme;
+  BottomBarState({required this.isDarkTheme});
   @override
 
   // TODO: implement props
-  List<Object?> get props => [themeData];
+  List<Object?> get props => [isDarkTheme];
 }
 
-class ChangeThemeState extends CubitStates{
-
-  late final Styles themeData;
-  ChangeThemeState({required this.themeData});
-  @override
-  // TODO: implement props
-  List<Object?> get props => [themeData];
-}

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_firebase/component/text/text_normal.dart';
 import 'package:shop_app_firebase/configs/colors.dart';
-import 'package:shop_app_firebase/cubit/app_cubit.dart';
-import 'package:shop_app_firebase/cubit/app_cutbit_states.dart';
+
 import 'package:shop_app_firebase/screens/cart.dart';
 import 'package:shop_app_firebase/screens/feeds.dart';
 import 'package:shop_app_firebase/screens/search.dart';
@@ -68,82 +66,72 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, CubitStates>(builder: (context, state) {
-      if (state is BottomBarState) {
-        var appTheme = state.themeData;
-        return MaterialApp(
-          theme: appTheme,
-          home: Scaffold(
-            body: _pages[_selectedPageIndex]['page'],
-            bottomNavigationBar: BottomAppBar(
-              shape: const CircularNotchedRectangle(),
-              notchMargin: 0.01,
-              clipBehavior: Clip.antiAlias,
-              child: SizedBox(
-                height: kBottomNavigationBarHeight * 0.98,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: AppColors.textColor,
-                    border: Border(
-                      top: BorderSide(
-                        color: AppColors.aPrimaryColor,
-                        width: 0.5,
-                      ),
-                    ),
-                  ),
-                  child: BottomNavigationBar(
-                    onTap: (index) {
-                      _selectedPage(index);
-                    },
-                    backgroundColor: Theme.of(context).primaryColor,
-                    unselectedItemColor: Colors.grey,
-                    selectedItemColor: AppColors.selectedColor,
-                    selectedLabelStyle: const TextStyle(fontSize: 14),
-                    items: const [
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.home),
-                        label: 'Home',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.rss_feed),
-                        label: 'Feeds',
-                      ),
-                      BottomNavigationBarItem(
-                          icon: Icon(null), activeIcon: null, label: 'Search'),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.shopping_bag),
-                        label: 'Cart',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.person),
-                        label: 'User',
-                      ),
-                    ],
-                  ),
+    return Scaffold(
+      body: _pages[_selectedPageIndex]['page'],
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 0.01,
+        clipBehavior: Clip.antiAlias,
+        child: SizedBox(
+          height: kBottomNavigationBarHeight * 0.98,
+          child: Container(
+            decoration: const BoxDecoration(
+              color: AppColors.textColor,
+              border: Border(
+                top: BorderSide(
+                  color: AppColors.aPrimaryColor,
+                  width: 0.5,
                 ),
               ),
             ),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.miniCenterDocked,
-            floatingActionButton: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: FloatingActionButton(
-                hoverElevation: 10,
-                elevation: 4,
-                child: const Icon(Icons.search),
-                splashColor: AppColors.aPrimaryColor,
-                onPressed: () {
-                  setState(() {
-                    _selectedPageIndex = 2;
-                  });
-                },
-              ),
+            child: BottomNavigationBar(
+              onTap: (index) {
+                _selectedPage(index);
+              },
+              backgroundColor: Theme.of(context).primaryColor,
+              unselectedItemColor: Colors.grey,
+              selectedItemColor: AppColors.selectedColor,
+              selectedLabelStyle: const TextStyle(fontSize: 14),
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.rss_feed),
+                  label: 'Feeds',
+                ),
+                BottomNavigationBarItem(
+                    icon: Icon(null), activeIcon: null, label: 'Search'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.shopping_bag),
+                  label: 'Cart',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: 'User',
+                ),
+              ],
             ),
           ),
-        );
-      } else {
-        return Container();
-      }
-    });
+        ),
+      ),
+      floatingActionButtonLocation:
+      FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FloatingActionButton(
+          hoverElevation: 10,
+          elevation: 4,
+          child: const Icon(Icons.search),
+          splashColor: AppColors.aPrimaryColor,
+          onPressed: () {
+            setState(() {
+              _selectedPageIndex = 2;
+            });
+          },
+        ),
+      ),
+    );
   }
 }
