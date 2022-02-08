@@ -7,9 +7,9 @@ import 'package:shop_app_firebase/cubit/app_cubit_logic.dart';
 import 'package:shop_app_firebase/cubit/app_cutbit_states.dart';
 import 'package:shop_app_firebase/model/theme_preference.dart';
 
-
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DarkThemePreference.init();
   runApp(const MyApp());
 }
 
@@ -20,17 +20,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<AppCubit>(
       create: (context) => AppCubit(),
-      child: BlocBuilder<AppCubit, CubitStates>(builder: (context,state) {
-        if(state is BottomBarState){
-           var isDarkTheme=state.isDarkTheme;
-           isDarkTheme=DarkThemePreference.getThemeStatus();
+      child: BlocBuilder<AppCubit, CubitStates>(builder: (context, state) {
+        if (state is BottomBarState) {
+          var isDarkTheme = state.isDarkTheme;
           return MaterialApp(
             title: 'Shopping App Fire Base',
             theme: Styles.themeData(isDarkTheme, context),
             home: const AppCubitLogics(),
           );
-        }
-        else {
+        } else {
           return Container();
         }
       }),

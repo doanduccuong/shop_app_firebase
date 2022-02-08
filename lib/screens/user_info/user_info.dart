@@ -31,7 +31,6 @@ class _UserInfoState extends State<UserInfo> {
     return BlocBuilder<AppCubit, CubitStates>(
       builder: (BuildContext context, state) {
         if (state is BottomBarState) {
-          DarkThemePreference darkThemePreference=DarkThemePreference();
           var isDarkTheme = state.isDarkTheme;
           return Scaffold(
             body: Stack(
@@ -126,32 +125,35 @@ class _UserInfoState extends State<UserInfo> {
                           ),
                           InkWell(
                             onTap: () {},
-                            child: const ListTile(
-                              leading: Icon(Icons.favorite_border),
+                            child:   ListTile(
+                              leading: const Icon(Icons.favorite_border),
                               title: TextNormal(
+                                colors: DarkThemePreference.getThemeStatus()==false?AppColors.textColor:Colors.white,
                                 title: 'Wishlist',
                               ),
-                              trailing: Icon(Icons.arrow_forward),
+                              trailing: const Icon(Icons.arrow_forward),
                             ),
                           ),
                           InkWell(
                             onTap: () {},
-                            child: const ListTile(
-                              leading: Icon(Icons.shopping_cart_outlined),
+                            child:  ListTile(
+                              leading: const Icon(Icons.shopping_cart_outlined),
                               title: TextNormal(
+                                colors: DarkThemePreference.getThemeStatus()==false?AppColors.textColor:Colors.white,
                                 title: 'Cart',
                               ),
-                              trailing: Icon(Icons.arrow_forward),
+                              trailing: const Icon(Icons.arrow_forward),
                             ),
                           ),
                           InkWell(
                             onTap: () {},
-                            child: const ListTile(
-                              leading: Icon(Icons.shopping_bag_outlined),
+                            child:  ListTile(
+                              leading: const Icon(Icons.shopping_bag_outlined),
                               title: TextNormal(
+                                colors: DarkThemePreference.getThemeStatus()==false?AppColors.textColor:Colors.white,
                                 title: 'My Orders',
                               ),
-                              trailing: Icon(Icons.arrow_forward),
+                              trailing: const Icon(Icons.arrow_forward),
                             ),
                           ),
                           const TextBold(
@@ -189,13 +191,14 @@ class _UserInfoState extends State<UserInfo> {
                             onChanged: (value) {
                               BlocProvider.of<AppCubit>(context)
                                   .changeTheme(value);
-                              print('cuong');
+                              //print('cuong');
                               DarkThemePreference.setThemeStatus(value);
+                              //print(DarkThemePreference.getThemeStatus());
                             },
 
                             switchType: SwitchType.cupertino,
                             switchActiveColor: Colors.indigo,
-                            title: const TextNormal(title: 'Dark Theme'),
+                            title:  TextNormal(title: 'Dark Theme',colors: DarkThemePreference.getThemeStatus()==false?AppColors.textColor:Colors.white,),
                           ),
                         ],
                       ),
