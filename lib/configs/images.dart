@@ -11,6 +11,13 @@ class AppImages{
   static const String imgHuawei="assets/images/img_huawei.jpg";
   static const String imgNike="assets/images/img_nike.jpg";
   static const String imgSamSung="assets/images/img_samsung.jpg";
+  static const String imgCatBeauty="assets/images/img_cat_beauty.jpg";
+  static const String imgCatClothes="assets/images/img_cat_clothes.jpg";
+  static const String imgCatFurniture="assets/images/img_cat_furniture.jpg";
+  static const String imgCatLaptops="assets/images/img_cat_laptops.png";
+  static const String imgCatPhones="assets/images/img_cat_phones.jpg";
+  static const String imgCatShoes="assets/images/img_cat_shoes.jpg";
+  static const String imgCatWatches="assets/images/img_cat_watches.jpg";
 
 
 

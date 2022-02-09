@@ -6,7 +6,7 @@ import 'package:shop_app_firebase/screens/cart/cart.dart';
 import 'package:shop_app_firebase/screens/feeds/feeds.dart';
 import 'package:shop_app_firebase/screens/search.dart';
 import 'package:shop_app_firebase/screens/user_info/user_info.dart';
-import 'home.dart';
+import 'home/home.dart';
 
 class BottomBarScreen extends StatefulWidget {
   const BottomBarScreen({Key? key}) : super(key: key);

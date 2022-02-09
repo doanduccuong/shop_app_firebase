@@ -14,4 +14,7 @@ class AppCubit extends Cubit<CubitStates> {
   void goEmptyScreen() {
     emit(EmptyCartState());
   }
+  void goFeedScreen() {
+    emit(FeedState());
+  }
 }

@@ -20,4 +20,9 @@ class EmptyCartState extends CubitStates{
   // TODO: implement props
   List<Object?> get props => [];
 }
+class FeedState extends CubitStates{
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
 

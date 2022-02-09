@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app_firebase/configs/images.dart';
+import 'package:shop_app_firebase/model/category_model.dart';
 
 class Constants {
   static const List<IconData> userTitleIcons = [
@@ -23,5 +24,21 @@ class Constants {
     AppImages.imgHM,
     AppImages.imgHuawei,
     AppImages.imgNike,
+  ];
+  static  List<CategoryModel> category=[
+     CategoryModel(images: AppImages.imgCatBeauty, title: 'Beauty'),
+    CategoryModel(images: AppImages.imgCatFurniture, title: 'Furniture'),
+    CategoryModel(images: AppImages.imgCatLaptops, title: 'Laptops'),
+    CategoryModel(images: AppImages.imgCatShoes, title: 'Shoes'),
+    CategoryModel(images: AppImages.imgCatWatches, title: 'Watches'),
+
+
+
+    // AppImages.imgCatClothes,
+    // AppImages.imgCatFurniture,
+    // AppImages.imgCatLaptops,
+    // AppImages.imgCatPhones,
+    // AppImages.imgCatShoes,
+    // AppImages.imgCatWatches,
   ];
 }

@@ -12,7 +12,7 @@ class Cart extends StatelessWidget {
     List products = [];
 
     return Scaffold(
-      body: !products.isEmpty
+      body: products.isEmpty
           ? const CartEmpty()
           : Scaffold(
               bottomSheet: checkoutSection(),
