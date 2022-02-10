@@ -1,20 +1,27 @@
 import 'package:bloc/bloc.dart';
 import 'package:shop_app_firebase/cubit/app_cutbit_states.dart';
 import 'package:shop_app_firebase/model/theme_preference.dart';
+import 'package:shop_app_firebase/screens/login/login_screen.dart';
 
 class AppCubit extends Cubit<CubitStates> {
   AppCubit() : super(InitialState()) {
     emit(BottomBarState(isDarkTheme: DarkThemePreference.getThemeStatus()));
   }
 
-  void changeTheme(bool value) {
+   changeTheme(bool value) {
     emit(BottomBarState(isDarkTheme: value));
   }
 
-  void goEmptyScreen() {
+   goEmptyScreen() {
     emit(EmptyCartState());
   }
-  void goFeedScreen() {
+   goFeedScreen() {
     emit(FeedState());
+  }
+   goLogInScreen() {
+    emit(LogInState());
+  }
+  goSignUpScreen(){
+    emit(SignUpState());
   }
 }

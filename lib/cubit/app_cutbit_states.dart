@@ -25,4 +25,14 @@ class FeedState extends CubitStates{
   // TODO: implement props
   List<Object?> get props => [];
 }
+class LogInState extends CubitStates{
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
+class SignUpState extends CubitStates{
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
 
