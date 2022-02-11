@@ -25,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   GlobalMethods _globalMethods = GlobalMethods();
   bool _isLoading = false;
-  String _pickedImage='';
+  String _pickedImage = '';
   @override
   void dispose() {
     _passwordFocusNode.dispose();
@@ -38,47 +38,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void _submitForm() async {
     final isValid = _formKey.currentState?.validate();
     FocusScope.of(context).unfocus();
-    var date=DateTime.now().toString();
-    var dateparse= DateTime.parse(date);
+    var date = DateTime.now().toString();
+    var dateparse = DateTime.parse(date);
     var formattedDate = "${dateparse.day}-${dateparse.month}-${dateparse.year}";
     if (isValid == true) {
       setState(() {
-        _isLoading=true;
+        _isLoading = true;
       });
       _formKey.currentState?.save();
       try {
-
         await _auth.createUserWithEmailAndPassword(
             email: _emailAddress.toLowerCase().trim(),
             password: _password.toLowerCase().trim());
-        final User? user=_auth.currentUser;
-        final _uid=user?.uid;
+        final User? user = _auth.currentUser;
+        final _uid = user?.uid;
         await FirebaseFirestore.instance.collection('users').doc(_uid).set({
           'id': _uid,
-          'name':_fullName,
-          'email':_emailAddress,
+          'name': _fullName,
+          'email': _emailAddress,
           'phoneNumber': _phoneNumber,
           'joinedAt': formattedDate,
           'createdAt': Timestamp.now(),
         });
-
       } catch (e) {
-        // final User? user=_auth.currentUser;
-        // final _uid=user?.uid;
-        // FirebaseFirestore.instance.collection('users').doc(_uid).set({
-        //   'id': _uid,
-        //   'name':_fullName,
-        //   'email':_emailAddress,
-        //   'phoneNumber': _phoneNumber,
-        //   'joinedAt': formattedDate,
-        //   'createdAt': Timestamp.now(),
-        // });
-        print('err');
-        print(e);
         _globalMethods.authErrorHandling(e.toString(), context);
       } finally {
         setState(() {
-
           _isLoading = false;
         });
       }
